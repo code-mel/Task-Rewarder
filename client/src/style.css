@@ -1,0 +1,22 @@
+/* Style for profile/left navigation */
+.main-container {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-left: 15px;
+    margin-right: 15px;
+    justify-content: space-between;
+}
+.side-nav {
+    display: block;
+    float: left;
+}
+.side-nav .dropdown{
+    text-align: center;
+}
+.profile-container {
+    text-align: center;
+}
+.profile-container img {
+    border-radius: 50%;
+}
