@@ -14,8 +14,8 @@
 ## How to Get Started ##
   > .......
 
-<!-- ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit. -->
+## Application Simple draft Mock up ##
+  > Parent page :
 
 <!-- ## Closing and Call to Action ##
   > Wrap it up and give pointers where the reader should go next. -->

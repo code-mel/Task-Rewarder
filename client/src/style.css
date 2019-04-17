@@ -1,22 +1,129 @@
 /* Style for profile/left navigation */
+#app {
+    background-image: linear-gradient(-45deg, #2196F3 0%, #2196F3 33%, #00BFA5 100%);
+    background-attachment: fixed;
+}
+/* 
+For the backgroun svg
+.jss436 {
+    left: -2px;
+    width: 100%;
+    height: auto;
+    bottom: -32px;
+    position: absolute;
+    transform: scale(1.1,0.8);
+    transform-origin: bottom;
+}
+*/
+.background {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.background .color-block  {
+    width: 100%;
+    height: 150px;
+    background: #f1f1f1;
+}
+.background-img img {
+    margin-bottom: -2px;
+}
 .main-container {
     display: flex;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
-    margin-left: 15px;
+    margin-left: 0;
     margin-right: 15px;
     justify-content: space-between;
 }
 .side-nav {
     display: block;
     float: left;
+    background: white;
+    padding-left: 30px;
+    height: 100vh;
+    -webkit-box-shadow: 10px 11px 10px -12px rgba(0,0,0,0.65);
+    -moz-box-shadow: 10px 11px 10px -12px rgba(0,0,0,0.65);
+    box-shadow: 10px 11px 10px -12px rgba(0,0,0,0.65);
 }
 .side-nav .dropdown{
     text-align: center;
 }
 .profile-container {
     text-align: center;
+    margin-top: 30px;
 }
 .profile-container img {
     border-radius: 50%;
+}
+.info-container {
+    margin-top: 50px;
+}
+/* Middle col ~ All forms */
+form {
+    padding: 5%;
+    border-radius: 12px;
+    background: white;
+}
+.task-form {
+    margin-top :30px;
+}
+.task-form::before {
+    color: #aaa;
+    font-size: medium;
+    font-weight: 400;
+    content: 'CREATE A NEW TASK';
+}
+.task-form .form-group{
+    margin-top: 20px;
+}
+/* Last Col ~ l */
+.last-col{
+    padding-top: 30px; 
+}
+.main-card {
+   border-radius: 12px;
+   padding: 5%;
+   width: 100%;
+   min-height: 150px; 
+}
+.taskList {
+   background-color: rgb(0, 150, 136);
+}
+.main-card .task-title {
+    height: 110px;
+    color: white;
+    position: relative;
+}
+.main-card .task-title :hover {
+    cursor: pointer;
+    color: #cdeadc;
+}
+.main-card .task-title span {
+    position: absolute;
+    bottom: 0;
+}
+/* Task Card style */
+.card {
+    margin-bottom: 20px;
+}
+.card-body .card-details {
+    padding: 0;
+    display: flex;
+}
+.card-body .card-details li {
+    list-style: none;
+    padding-right: 10px; 
+}
+
+/* other style fixs */
+
+.main-container .col-md-9.row {
+    margin-left: 0;
+}
+input.number-value.form-control {
+    width: 20%;
+}
+body {
+    position: relative
 }

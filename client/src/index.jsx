@@ -1,6 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import Taskform from './components/Taskform.jsx'
+import Tasks from './components/Tasks.jsx'
+import backgroundSvg from './images/background.svg'
+
 //Bootstrap style 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../src/style.css'
@@ -38,6 +42,12 @@ class App extends React.Component {
   render () {
     return (
       <div className="main-container">
+      <div className="background">
+        <div className="background-img">
+          <img src={backgroundSvg}/>
+          <div className="color-block"></div>
+        </div>
+      </div>
           <Col md="3" className="side-nav">
           <div className="profile-container">
             <img src="https://via.placeholder.com/150" alt="Profile Pic"/>
@@ -67,8 +77,12 @@ class App extends React.Component {
           
         </Col>
           <Row className="col-md-9">   
-            <Col md="7">.col-md-7</Col>
-            <Col md="5">.col-md-5</Col>
+            <Col md="7">
+              <Taskform/>
+            </Col>
+            <Col md="5" className="last-col">
+              <Tasks />
+            </Col>
           </Row> 
       </div>)
   }
