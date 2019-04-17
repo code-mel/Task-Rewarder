@@ -1,4 +1,4 @@
-# Reward Tasker #
+# Task-Rewarder #
  
 ## About ##
   > This small application is designed for parents to create neatly set tasks for their children.  Tasks that have different amount of reward values, and each task that is completed by a child has a chance to redeem rewards that the guardian or parent has made as well. 
