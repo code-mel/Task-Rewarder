@@ -24,7 +24,7 @@ CREATE TABLE `parentsChildren`
 (
   `id` int PRIMARY KEY AUTO_INCREMENT,
   `parent_id` int,
-  `chid_id` int
+  `child_id` int
 );
 
 CREATE TABLE `task`
@@ -34,7 +34,7 @@ CREATE TABLE `task`
   `value` int,
   `aproved` boolean,
   `parent_id` int,
-  `chid_id` int NULL
+  `child_id` int NULL
 );
 
 CREATE TABLE `reward`
@@ -44,17 +44,17 @@ CREATE TABLE `reward`
   `value` int,
   `aproved` boolean,
   `parent_id` int,
-  `chid_id` int NULL
+  `child_id` int NULL
 );
 
-ALTER TABLE `parentsChildren` ADD FOREIGN KEY (`chid_id`) REFERENCES `child` (`id`);
+ALTER TABLE `parentsChildren` ADD FOREIGN KEY (`child_id`) REFERENCES `child` (`id`);
 
 ALTER TABLE `parentsChildren` ADD FOREIGN KEY (`parent_id`) REFERENCES `parent` (`id`);
 
-ALTER TABLE `task` ADD FOREIGN KEY (`chid_id`) REFERENCES `child` (`id`);
+ALTER TABLE `task` ADD FOREIGN KEY (`child_id`) REFERENCES `child` (`id`);
 
 ALTER TABLE `task` ADD FOREIGN KEY (`parent_id`) REFERENCES `parent` (`id`);
 
-ALTER TABLE `reward` ADD FOREIGN KEY (`chid_id`) REFERENCES `child` (`id`);
+ALTER TABLE `reward` ADD FOREIGN KEY (`child_id`) REFERENCES `child` (`id`);
 
 ALTER TABLE `reward` ADD FOREIGN KEY (`parent_id`) REFERENCES `parent` (`id`);
