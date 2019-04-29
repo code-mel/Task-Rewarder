@@ -18,13 +18,7 @@ CREATE TABLE `child`
   `name` varchar(255),
   `userName` varchar(255),
   `password` varchar(255)
-);
-
-CREATE TABLE `parentsChildren`
-(
-  `id` int PRIMARY KEY AUTO_INCREMENT,
-  `parent_id` int,
-  `child_id` int
+  `parent_id` int NULL
 );
 
 CREATE TABLE `task`
@@ -47,9 +41,7 @@ CREATE TABLE `reward`
   `child_id` int NULL
 );
 
-ALTER TABLE `parentsChildren` ADD FOREIGN KEY (`child_id`) REFERENCES `child` (`id`);
-
-ALTER TABLE `parentsChildren` ADD FOREIGN KEY (`parent_id`) REFERENCES `parent` (`id`);
+ALTER TABLE `child` ADD FOREIGN KEY (`parent_id`) REFERENCES `parent` (`id`);
 
 ALTER TABLE `task` ADD FOREIGN KEY (`child_id`) REFERENCES `child` (`id`);
 
