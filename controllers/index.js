@@ -42,7 +42,7 @@ exports.addTask = (req, res) => {
     console.log("Tasked was added", req.body);
     let task = Object.values(req.body);
 
-    db.query('INSERT INTO task (title,value, aproved, parent_id, chid_id) VALUES (?,?,?,?,?);',task, (err,result) => {
+    db.query('INSERT INTO task (title,value, aproved, parent_id) VALUES (?,?,?,?);',task, (err,result) => {
 		if(err) {
 			res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
 		} else {

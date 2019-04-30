@@ -18,13 +18,13 @@ app.post('/parent', controllers.addParent);
 // Parent database/gate way (Note : test pass)
 app.get('/parent/:parentId', controllers.parentInfo);
 
-// Tasks based on parents id
+// Tasks based on parents id (Note : test pass)
 app.get('/parent/:parentId/tasks', controllers.selectAllOfTasksOfParent);
 
 
 /* ---- This is for Tasks  */
 // Add task to db
-app.post('/task', controllers.selectAllOfTasksOfParent);
+app.post('/task', controllers.addTask);
 
 const port = 3000;
 app.listen(port, function() {
