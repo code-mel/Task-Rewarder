@@ -1,25 +1,26 @@
-var express = require('express');
+const express = require('express');
 const bodyParser = require('body-parser');
-var db = require('../database');
-const controllers = require('../controllers')
-var app = express();
+const path = require('path');
+const db = require('../database');
+let controllers = require('../controllers');
 
+var app = express();
 app.use(bodyParser.json());
 
-app.use(bodyParser.urlencoded({
-	extended : false
-}));
+app.use(bodyParser.urlencoded({extended : false}));
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(path.resolve(__dirname, '../client/dist')));
+
+app.use('/parent/:id',express.static(path.resolve(__dirname, '../client/dist')));
 
 // Add parent to db (Note : test pass)
-app.post('/parent', controllers.addParent);
+app.post('/addparent', controllers.addParent);
 
 // Parent database/gate way (Note : test pass)
-app.get('/parent/:parentId', controllers.parentInfo);
+app.get('/parentinfo/:parentId', controllers.parentInfo);
 
 // Tasks based on parents id (Note : test pass)
-app.get('/parent/:parentId/tasks', controllers.selectAllOfTasksOfParent);
+app.get('/parentinfo/:parentId/tasks', controllers.selectAllOfTasksOfParent);
 
 
 /* ---- This is for Tasks  */
