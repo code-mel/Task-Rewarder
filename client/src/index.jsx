@@ -5,10 +5,14 @@ import Taskform from './components/Taskform.jsx'
 import Tasks from './components/Tasks.jsx'
 import backgroundSvg from './images/background.svg'
 
+// Redux - store/provider
+import {Provider} from 'react-redux'
+import store from '../store.jsx'
+
 //Bootstrap style 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../src/style.css'
-import { Container, Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,20 +23,6 @@ class App extends React.Component {
     }
     this.toggle = this.toggle.bind(this);
   }
-
-  componentDidMount() {
-    $.ajax({
-      url: '/items', 
-      success: (data) => {
-        this.setState({
-          items: data
-        })
-      },
-      error: (err) => {
-        console.log('err', err);
-      }
-    });
-  }
   toggle() {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
@@ -41,6 +31,7 @@ class App extends React.Component {
 
   render () {
     return (
+      <Provider store={store}>
       <div className="main-container">
       <div className="background">
         <div className="background-img">
@@ -84,7 +75,8 @@ class App extends React.Component {
               <Tasks />
             </Col>
           </Row> 
-      </div>)
+      </div>
+      </Provider>)
   }
 }
 

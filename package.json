@@ -8,8 +8,7 @@
     "react-dev": "webpack --mode development --watch",
     "build": "webpack --mode production"
   },
-  "author": "Beth Johnson",
-  "license": "ISC",
+  "author": "Melanie V.",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
@@ -34,6 +33,9 @@
     "popper.js": "^1.15.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "reactstrap": "^8.0.0"
+    "react-redux": "^7.0.3",
+    "reactstrap": "^8.0.0",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
   }
 }

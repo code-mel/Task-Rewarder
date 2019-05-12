@@ -3,12 +3,13 @@ import {Button, CardBody, Card} from 'reactstrap'
 
 class SingleTask extends Component {
   render() {
+    const {id, title, value, aproved, parent_id} = this.props.post;
     return (
-    <Card>
+    <Card key={id}>
         <CardBody>
         <ul className="card-details">
-            <li><strong>Mow the lawn and Wash Cars</strong></li>
-            <li> Pts. 120</li>
+            <li><strong>{title}</strong></li>
+            <li> Pts. {value}</li>
             </ul>
             <Button>Delete</Button> <Button>update</Button>
         </CardBody>
