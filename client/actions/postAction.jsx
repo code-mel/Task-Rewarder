@@ -14,10 +14,13 @@ export const fetchPost = (parentId) => dispatch => {
   export const newPost = (postData) => dispatch => {
     axios.post('/task', postData)
     .then( (addedPost) => { 
-      console.log('Task added :',addedPost.data);
+      // adding unique id to task
+      let taskData = postData;
+      taskData['id'] = Number(addedPost.data);
+      taskData['child_id'] = undefined;
       dispatch({
         type: NEW_POST,
-        payload: addedPost.data
+        payload: taskData
       })
     })
     .catch( (error) => { // this will throw an errors for any caught erros 

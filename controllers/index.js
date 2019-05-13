@@ -45,7 +45,8 @@ exports.addTask = (req, res) => {
 		if(err) {
 			res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
 		} else {
-			res.send(result);
+			let id = result.insertId.toString(); // this will help send the recent record id back
+			res.send(id);
 		}
 	})
 };

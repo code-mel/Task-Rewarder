@@ -12,10 +12,16 @@ class Tasks extends Component {
   componentWillMount() {
     this.props.fetchPost(endPoint);
   }
+  componentDidUpdate(prevProps) {
+    // this will compare and help determine if there were any change in the state in our store
+    if (this.props.newPost !== prevProps.newPost) {
+      let updateState = this.props.posts.unshift(this.props.newPost);
+      this.setState({posts : updateState})
+    }
+  }
   render() {
     const post = this.props.posts.map(post => (
         <SingleTask key={post.id} post={post}/>
-        
       ));
     return (
       
@@ -36,6 +42,6 @@ class Tasks extends Component {
 }
 const mapStateToProps = state => (
     { posts: state.post.tasks,
-      newPost : state.post.item
+      newPost : state.post.task
     })
   export default connect (mapStateToProps, {fetchPost})(Tasks);
