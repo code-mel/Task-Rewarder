@@ -20,7 +20,7 @@ exports.parentInfo = (req, res) => {
 		if(err) {
 			res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
 		} else {
-			res.send(result);
+			res.status(200).send(result);
 		}
 	})
 };
@@ -32,7 +32,7 @@ exports.selectAllOfTasksOfParent = (req, res) => {
 		if(err) {
 			res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
 		} else {
-			res.send(result);
+			res.status(200).send(result);
 		}
 	})
 };
@@ -46,7 +46,19 @@ exports.addTask = (req, res) => {
 			res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
 		} else {
 			let id = result.insertId.toString(); // this will help send the recent record id back
-			res.send(id);
+			res.status(201).send(id);
 		}
 	})
+};
+// Delte task
+exports.deleteTask = (req, res) => {
+	//console.log("Tasked was added", req.body);
+	let taskId = req.params.id
+	db.query('DELETE FROM task WHERE id = ?',[taskId], (err,result) => {
+	if(err) {
+		res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
+	} else {
+		res.status(200).send(result);
+	}
+})
 };

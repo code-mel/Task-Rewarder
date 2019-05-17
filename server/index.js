@@ -27,6 +27,9 @@ app.get('/parentinfo/:parentId/tasks', controllers.selectAllOfTasksOfParent);
 // Add task to db
 app.post('/task', controllers.addTask);
 
+// Add task to db
+app.delete('/task/:id', controllers.deleteTask);
+
 const port = 3000;
 app.listen(port, function() {
   console.log(`listening on port ${port}!`);
