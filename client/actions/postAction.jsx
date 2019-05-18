@@ -43,7 +43,7 @@ export const fetchPost = (parentId) => dispatch => {
   export const updatePost = (updatedPost) => dispatch => {
     //console.log('im being triggered updated Fnc')
     let id = updatedPost.id;
-    axios.delete(`/task/${id}`)
+    axios.put(`/task/${id}`, updatedPost)
     .then( () => { 
       console.log('Post updated :',updatedPost);
       dispatch({

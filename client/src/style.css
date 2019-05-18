@@ -115,6 +115,11 @@ form {
     list-style: none;
     padding-right: 10px; 
 }
+.update-form input {
+    width: 80%;
+    display: inline-block;
+    margin-bottom: 15px; 
+}
 
 /* other style fixs */
 
@@ -123,6 +128,7 @@ form {
 }
 input.number-value.form-control {
     width: 20%;
+    padding: 5px;
 }
 body {
     position: relative
