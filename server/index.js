@@ -27,8 +27,11 @@ app.get('/parentinfo/:parentId/tasks', controllers.selectAllOfTasksOfParent);
 // Add task to db
 app.post('/task', controllers.addTask);
 
-// Add task to db
+// Delete task to db
 app.delete('/task/:id', controllers.deleteTask);
+
+// update task
+app.put('/task/:id', controllers.updateTask);
 
 const port = 3000;
 app.listen(port, function() {

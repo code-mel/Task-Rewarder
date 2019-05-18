@@ -50,7 +50,7 @@ exports.addTask = (req, res) => {
 		}
 	})
 };
-// Delte task
+// Delete task
 exports.deleteTask = (req, res) => {
 	//console.log("Tasked was added", req.body);
 	let taskId = req.params.id
@@ -61,4 +61,16 @@ exports.deleteTask = (req, res) => {
 		res.status(200).send(result);
 	}
 })
+};
+
+// This will UPDATE task
+exports.updateTask = (req, res) => {
+	let updatedtask = Object.values(req.body);
+	db.query('UPDATE task SET title=?, value=? WHERE id=?',updatedtask, (err,result) => {
+		if(err) {
+			res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
+		} else {
+			res.status(200).send(result);
+		}
+	})
 };
