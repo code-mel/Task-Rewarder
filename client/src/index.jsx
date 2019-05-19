@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import Taskform from './components/Taskform.jsx'
+import Childform from './components/Childform.jsx'
 import Tasks from './components/Tasks.jsx'
 import backgroundSvg from './images/background.svg'
 
@@ -70,6 +71,7 @@ class App extends React.Component {
           <Row className="col-md-9">   
             <Col md="7">
               <Taskform/>
+              <Childform />
             </Col>
             <Col md="5" className="last-col">
               <Tasks />

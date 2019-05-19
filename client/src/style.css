@@ -133,3 +133,6 @@ input.number-value.form-control {
 body {
     position: relative
 }
+form {
+    margin-bottom: 30px;
+}
