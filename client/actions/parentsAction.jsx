@@ -9,8 +9,8 @@ export const newChild = (childData) => dispatch => {
       childData['id'] = Number(addedChild.data); 
       childData['child_id'] = undefined;
       dispatch({
-        type: NEW_POST,
-        payload: taskData
+        type: NEW_KID,
+        payload: childData
       })
     })
     .catch( (error) => { // this will throw an errors for any caught erros 

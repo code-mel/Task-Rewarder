@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, FormGroup, Label, Input } from 'reactstrap';
 
 //to connect to store
 import { connect } from 'react-redux';
-import { newKid } from '../../actions/postAction.jsx'
+import { newChild } from '../../actions/parentsAction.jsx'
 
 let pathname = window.location.pathname.split('/');
 let endPoint = pathname[pathname.length -2] === '/' ? 1 : pathname[pathname.length -2];
@@ -32,7 +32,7 @@ class ChildFrom extends Component {
       parent_id : endPoint
     }
     // Call Action and past post through
-   // this.props.newKid(kid);
+    this.props.newChild(kid);
 
     // Reset state
     this.setState({
@@ -60,4 +60,4 @@ class ChildFrom extends Component {
     )
   }
 }
-export default connect (null, {newKid})(ChildFrom);
+export default connect (null, {newChild})(ChildFrom);
