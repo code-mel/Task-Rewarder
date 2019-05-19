@@ -12,6 +12,18 @@ exports.addParent = (req, res) => {
 		}
 	})
 };
+exports.addChild = (req, res) => {
+	//console.log("Parent was added", req.body);
+	let parent = Object.values(req.body);
+	db.query('INSERT INTO child (name,userName, password,parent_id) VALUES (?,?,?,?);',parent, (err,result) => {
+	if(err) {
+		res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
+	} else {
+		let childId = result.insertId.toString();
+		res.send(childId);
+	}
+})
+};
 
 // Get parent basicInfo based on id (Notes : passed connection/get test)
 exports.parentInfo = (req, res) => {

@@ -2,7 +2,9 @@
 import { combineReducers } from 'redux'
 
 import postReducer from './postReducer.jsx'
+import parentReducer from './parentReducer.jsx'
 
 export default combineReducers({
-    post : postReducer
+    post : postReducer,
+    parent : parentReducer
 })
