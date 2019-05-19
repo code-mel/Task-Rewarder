@@ -1,6 +1,19 @@
-import { FETCH_POSTS, NEW_POST, DELETE_POST,UPDATE_POST } from './types.jsx';
+import { FETCH_POSTS, NEW_POST, DELETE_POST,UPDATE_POST,FETCH_INFO } from './types.jsx';
 import axios from 'axios';
 
+export const fetchParentInfo = (parentId) => dispatch => {
+  //console.log('I am fetching',parentId)
+    axios.get(`/parentinfo/${parentId}`)
+      .then(record => {
+        console.log(record)
+        dispatch({
+          type: FETCH_INFO,
+          payload: record.data
+        })
+      }
+      )
+      
+  };
 export const fetchPost = (parentId) => dispatch => {
   //console.log('I am fetching',parentId)
     axios.get(`/parentinfo/${parentId}/tasks`)

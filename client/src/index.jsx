@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
+import Sidebar from './components/Sidebar.jsx'
 import Taskform from './components/Taskform.jsx'
 import Tasks from './components/Tasks.jsx'
 import backgroundSvg from './images/background.svg'
@@ -12,23 +13,9 @@ import store from '../store.jsx'
 //Bootstrap style 
 import '../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import '../src/style.css'
-import { Row, Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Row, Col} from 'reactstrap';
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { 
-      items: [],
-      dropdownOpen: false
-    }
-    this.toggle = this.toggle.bind(this);
-  }
-  toggle() {
-    this.setState(prevState => ({
-      dropdownOpen: !prevState.dropdownOpen
-    }));
-  }
-
   render () {
     return (
       <Provider store={store}>
@@ -39,34 +26,7 @@ class App extends React.Component {
           <div className="color-block"></div>
         </div>
       </div>
-          <Col md="3" className="side-nav">
-          <div className="profile-container">
-            <img src="https://via.placeholder.com/150" alt="Profile Pic"/>
-            <h3>Melanie V.</h3>
-          </div>
-
-          <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-            <DropdownToggle caret>
-              Children
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem >Kid one</DropdownItem>
-              <DropdownItem>Kid Two</DropdownItem>
-              <DropdownItem>Kid Three</DropdownItem>
-            </DropdownMenu>
-          </Dropdown>
-          
-          <div className="info-container">
-            <h4>Tasks info:</h4>
-            <p>Total tasks created : 5</p>
-            <p>Number completed : 2</p>
-            <hr/>
-            <h4>Reward info:</h4>
-            <p>Total Rewards created : 8</p>
-            <p>Rewards Claimed : 2</p>
-          </div>
-          
-        </Col>
+          <Sidebar />
           <Row className="col-md-9">   
             <Col md="7">
               <Taskform/>
