@@ -22,6 +22,9 @@ app.get('/parentinfo/:parentId', controllers.parentInfo);
 // Tasks based on parents id (Note : test pass)
 app.get('/parentinfo/:parentId/tasks', controllers.selectAllOfTasksOfParent);
 
+// Tasks based on parents id (Note : test pass)
+app.post('/child', controllers.addChild);
+
 
 /* ---- This is for Tasks  */
 // Add task to db
