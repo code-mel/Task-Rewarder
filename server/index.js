@@ -22,9 +22,6 @@ app.get('/parentinfo/:parentId', controllers.parentInfo);
 // Tasks based on parents id (Note : test pass)
 app.get('/parentinfo/:parentId/tasks', controllers.selectAllOfTasksOfParent);
 
-// Tasks based on parents id (Note : test pass)
-app.post('/child', controllers.addChild);
-
 
 /* ---- This is for Tasks  */
 // Add task to db
@@ -35,6 +32,13 @@ app.delete('/task/:id', controllers.deleteTask);
 
 // update task
 app.put('/task/:id', controllers.updateTask);
+
+/* ----This is anything related to children data */
+// Addes in a child 
+app.post('/child', controllers.addChild);
+
+// Gets children basedon passed parent id 
+app.get('/parentinfo/:parentId/children', controllers.getParentChildren);
 
 const port = 3000;
 app.listen(port, function() {
