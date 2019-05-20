@@ -1,6 +1,19 @@
-import { NEW_KID } from './types.jsx';
+import { NEW_KID, FETCH_INFO } from './types.jsx';
 import axios from 'axios';
 
+export const fetchParentInfo = (parentId) => dispatch => {
+  //console.log('I am fetching',parentId)
+    axios.get(`/parentinfo/${parentId}`)
+      .then(record => {
+        //console.log(record)
+        dispatch({
+          type: FETCH_INFO,
+          payload: record.data
+        })
+      }
+      )
+      
+  };
 export const newChild = (childData) => dispatch => {
     axios.post('/child', childData)
     .then( (addedChild) => { 

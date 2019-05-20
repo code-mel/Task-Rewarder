@@ -1,17 +1,11 @@
-import { FETCH_POSTS, NEW_POST, DELETE_POST, UPDATE_POST,FETCH_INFO } from '../actions/types.jsx';
+import { FETCH_POSTS, NEW_POST, DELETE_POST, UPDATE_POST } from '../actions/types.jsx';
 
 const initialState = {
     tasks : [],
     task : {},
-    parent :{}
 }
 export default (state = initialState, action) => {
     switch(action.type) {
-        case FETCH_INFO :
-            return {
-                ...state,
-                parent : action.payload[0]
-            }
         case FETCH_POSTS :
             return {
                 ...state,

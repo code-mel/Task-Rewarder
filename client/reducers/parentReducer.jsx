@@ -1,4 +1,4 @@
-import { NEW_KID } from '../actions/types.jsx';
+import { NEW_KID, FETCH_INFO } from '../actions/types.jsx';
 
 const initialState = {
     children : [],
@@ -11,6 +11,11 @@ export default (state = initialState, action) => {
         return {
             ...state,
             child : action.payload
+        }
+        case FETCH_INFO :
+        return {
+            ...state,
+            parent : action.payload[0]
         }
         default:
             return state;
