@@ -1,4 +1,4 @@
-import { NEW_KID, FETCH_INFO } from './types.jsx';
+import { NEW_KID, FETCH_INFO, FETCH_KIDS } from './types.jsx';
 import axios from 'axios';
 
 export const fetchParentInfo = (parentId) => dispatch => {
@@ -14,6 +14,18 @@ export const fetchParentInfo = (parentId) => dispatch => {
       )
       
   };
+  //This will fetch all children based on paretne id
+  export const fetchChildren = (parentId) => dispatch => {
+      axios.get(`/parentinfo/${parentId}/children`)
+        .then(record => {
+          dispatch({
+            type: FETCH_KIDS,
+            payload: record.data
+          })
+        }
+        )
+        
+    };
 export const newChild = (childData) => dispatch => {
     axios.post('/child', childData)
     .then( (addedChild) => { 

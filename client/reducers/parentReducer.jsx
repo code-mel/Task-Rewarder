@@ -1,4 +1,4 @@
-import { NEW_KID, FETCH_INFO } from '../actions/types.jsx';
+import { NEW_KID, FETCH_INFO,FETCH_KIDS } from '../actions/types.jsx';
 
 const initialState = {
     children : [],
@@ -7,6 +7,11 @@ const initialState = {
 }
 export default (state = initialState, action) => {
     switch(action.type) {
+        case FETCH_KIDS :
+        return {
+            ...state,
+            children : action.payload
+        }
         case NEW_KID :
         return {
             ...state,

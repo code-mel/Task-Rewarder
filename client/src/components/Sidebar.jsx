@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 //to connect to store
 import { connect } from 'react-redux';
-import { fetchParentInfo } from '../../actions/postAction.jsx'
+import { fetchParentInfo, fetchChildren } from '../../actions/parentsAction.jsx'
 
 import {Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
 
@@ -23,11 +23,23 @@ class Sidebar extends Component {
       }));
     }
     componentWillMount() {
+      //gets parent info
       this.props.fetchParentInfo(endPoint);
-      this.props.fetchParentInfo(endPoint);
+      // gets children based on parent id
+      this.props.fetchChildren(endPoint);
+    }
+    componentDidUpdate(prevProps) {
+      // this will compare and help determine if there were any change in the state in our store
+      if (this.props.child !== prevProps.child) {
+        let updateState = this.props.children.unshift(this.props.child);
+        this.setState({children : updateState})
+      }
     }
   render() {
-      const {id, name, userName} = this.props.parentInfo
+      const {id, name, userName} = this.props.parentInfo;
+      const children = this.props.children.map(child => (
+        <DropdownItem key={child.id}>{child.name}</DropdownItem>
+      ));
     return (
     <Col md="3" className="side-nav">
         <div className="profile-container">
@@ -40,9 +52,7 @@ class Sidebar extends Component {
             Children
           </DropdownToggle>
           <DropdownMenu>
-            <DropdownItem >Kid one</DropdownItem>
-            <DropdownItem>Kid Two</DropdownItem>
-            <DropdownItem>Kid Three</DropdownItem>
+            {children}
           </DropdownMenu>
         </Dropdown>
         
@@ -61,8 +71,10 @@ class Sidebar extends Component {
   }
 }
 const mapStateToProps = state => (
-    { parentInfo: state.post.parent,
+    { parentInfo: state.parent.parent,
+      children : state.parent.children,
+      child : state.parent.child,
       posts: state.post.tasks
     }
     )
-export default connect (mapStateToProps, {fetchParentInfo})(Sidebar);
+export default connect (mapStateToProps, {fetchParentInfo,fetchChildren})(Sidebar);

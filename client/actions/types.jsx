@@ -7,3 +7,4 @@ export const FETCH_INFO = 'FETCH_INFO';
 
 
 export const NEW_KID = 'NEW_KID';
+export const FETCH_KIDS = 'FETCH_KIDS';
