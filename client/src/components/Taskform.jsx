@@ -5,8 +5,6 @@ import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { connect } from 'react-redux';
 import { newPost } from '../../actions/postAction.jsx'
 
-let pathname = window.location.pathname.split('/');
-let endPoint = pathname[pathname.length -2] === '/' ? 1 : pathname[pathname.length -2];
 class Taskform extends Component {
   constructor(props) {
     super(props)
@@ -26,7 +24,7 @@ class Taskform extends Component {
       title : this.state.title,
       value : this.state.value,
       aproved : false,
-      parent_id : endPoint
+      parent_id : this.props.pramsId
     }
     // Call Action and past post through
     this.props.newPost(task);
@@ -39,6 +37,7 @@ class Taskform extends Component {
   }
 
   render() {
+    //console.log(this.props.pramsId)
     return (
       
       <form onSubmit={this.submitHandler} className="task-form">

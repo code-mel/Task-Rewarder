@@ -5,8 +5,6 @@ import { Button, FormGroup, Label, Input } from 'reactstrap';
 import { connect } from 'react-redux';
 import { newChild } from '../../actions/parentsAction.jsx'
 
-let pathname = window.location.pathname.split('/');
-let endPoint = pathname[pathname.length -2] === '/' ? 1 : pathname[pathname.length -2];
 class ChildFrom extends Component {
   constructor(props) {
     super(props)
@@ -14,7 +12,7 @@ class ChildFrom extends Component {
       name :'',
       userName : '',
       password: '',
-      parent_id : endPoint
+      parent_id : this.props.pramsId
 
     }
     this.stateHandler = this.stateHandler.bind(this);
@@ -29,7 +27,7 @@ class ChildFrom extends Component {
       name :this.state.name,
       userName : this.state.userName,
       password: this.state.password,
-      parent_id : endPoint
+      parent_id : this.state.parent_id
     }
     // Call Action and past post through
     this.props.newChild(kid);
@@ -39,7 +37,7 @@ class ChildFrom extends Component {
         name :'',
         userName : '',
         password: '',
-        parent_id : endPoint
+        parent_id : this.state.parent_id
     })
   }
 

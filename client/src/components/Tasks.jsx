@@ -6,11 +6,9 @@ import { connect } from 'react-redux';
 import { fetchPost } from '../../actions/postAction.jsx'
 
 import SingleTask from './SingleTask.jsx'
-let pathname = window.location.pathname.split('/');
-let endPoint = pathname[pathname.length -2] === '/' ? 1 : pathname[pathname.length -2];
 class Tasks extends Component {
   componentWillMount() {
-    this.props.fetchPost(endPoint);
+    this.props.fetchPost(this.props.pramsId);
   }
   componentDidUpdate(prevProps) {
     // this will compare and help determine if there were any change in the state in our store

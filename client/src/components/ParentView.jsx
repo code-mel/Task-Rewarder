@@ -9,6 +9,9 @@ import backgroundSvg from '../images/background.svg'
 
 class ParentView extends Component {
   render() {
+    //id => gets the id from params (Your Route => path="your path/:params") 
+    // with id will be passedo each component that requires it.
+    const id = this.props.match.params.parentId;
     return (
         <div className="main-container">
         <div className="background">
@@ -17,14 +20,14 @@ class ParentView extends Component {
             <div className="color-block"></div>
           </div>
         </div>
-            <Sidebar />
+            <Sidebar pramsId={id}/>
             <Row className="col-md-9">   
               <Col md="7">
-                <Taskform/>
-                <Childform />
+                <Taskform pramsId={id}/>
+                <Childform pramsId={id} />
               </Col>
               <Col md="5" className="last-col">
-                <Tasks />
+                <Tasks pramsId={id} />
               </Col>
             </Row> 
         </div>

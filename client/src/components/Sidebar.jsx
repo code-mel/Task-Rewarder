@@ -6,9 +6,6 @@ import { fetchParentInfo, fetchChildren } from '../../actions/parentsAction.jsx'
 
 import {Col, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
 
-let pathname = window.location.pathname.split('/');
-let endPoint = pathname[pathname.length -2] === '/' ? 1 : pathname[pathname.length -2];
-
 class Sidebar extends Component {
     constructor(props) {
       super(props);
@@ -24,9 +21,9 @@ class Sidebar extends Component {
     }
     componentWillMount() {
       //gets parent info
-      this.props.fetchParentInfo(endPoint);
+      this.props.fetchParentInfo(this.props.pramsId);
       // gets children based on parent id
-      this.props.fetchChildren(endPoint);
+      this.props.fetchChildren(this.props.pramsId);
     }
     componentDidUpdate(prevProps) {
       // this will compare and help determine if there were any change in the state in our store
