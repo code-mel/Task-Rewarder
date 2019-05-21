@@ -11,8 +11,6 @@ app.use(bodyParser.urlencoded({extended : false}));
 
 app.use(express.static(path.resolve(__dirname, '../client/dist')));
 
-app.use('/parent/:id',express.static(path.resolve(__dirname, '../client/dist')));
-
 // Add parent to db (Note : test pass)
 app.post('/addparent', controllers.addParent);
 
@@ -40,6 +38,9 @@ app.post('/child', controllers.addChild);
 // Gets children basedon passed parent id 
 app.get('/parentinfo/:parentId/children', controllers.getParentChildren);
 
+app.get('*', function(req, res) {
+  res.sendFile(path.resolve(__dirname,'../client/dist/index.html'));
+});
 const port = 3000;
 app.listen(port, function() {
   console.log(`listening on port ${port}!`);
