@@ -16,6 +16,7 @@ CREATE TABLE `child` (
   `name` varchar(255),
   `userName` varchar(255),
   `password` varchar(255),
+  `wallet` int NULL,
   `parent_id` int NULL
 );
 

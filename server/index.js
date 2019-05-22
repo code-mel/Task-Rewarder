@@ -38,6 +38,9 @@ app.post('/child', controllers.addChild);
 // Gets children basedon passed parent id 
 app.get('/parentinfo/:parentId/children', controllers.getParentChildren);
 
+/* This is to get all tasks for child view based on parent id */
+app.get('/child/:parentId/tasks', controllers.getChildrenTasks);
+
 app.get('*', function(req, res) {
   res.sendFile(path.resolve(__dirname,'../client/dist/index.html'));
 });

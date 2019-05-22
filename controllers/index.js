@@ -97,3 +97,14 @@ exports.getParentChildren = (req, res) => {
 	}
 })
 };
+
+// Will grab all tasks for child based on parent id
+exports.getChildrenTasks = (req, res) => {
+	db.query('SELECT * FROM task WHERE parent_id = ?',[req.params.parentId], (err,result) => {
+	if(err) {
+		res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
+	} else {
+		res.status(200).send(result);
+	}
+})
+};
