@@ -99,6 +99,17 @@ exports.getParentChildren = (req, res) => {
 };
 
 // Will grab all tasks for child based on parent id
+exports.getChildInfo  = (req, res) => {
+	//console.log("selectAllOfTasksOfParent - has been triggered", req.params);
+	db.query('SELECT * FROM child WHERE id = ?',[req.params.childId], (err,result) => {
+	if(err) {
+		res.status(505).send(err); 
+	} else {
+		res.status(200).send(result);
+	}
+})
+};
+// Will grab all tasks for child based on parent id
 exports.getChildrenTasks = (req, res) => {
 	db.query('SELECT * FROM task WHERE parent_id = ?',[req.params.parentId], (err,result) => {
 	if(err) {
