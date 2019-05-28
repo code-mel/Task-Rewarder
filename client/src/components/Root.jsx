@@ -9,7 +9,7 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <Router>
         <Route path="/parent/:parentId" component={ParentView} />
-        <Route path="/child" component={ChildView} />
+        <Route path="/child/:childId" component={ChildView} />
     </Router>
   </Provider>
 )
