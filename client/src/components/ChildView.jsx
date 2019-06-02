@@ -1,12 +1,42 @@
 import React, { Component } from 'react'
+import { Row, Col} from 'reactstrap'
+
+import  ChildTasks  from "./ChildViewComp/ChildTasks.jsx";
+
+import backgroundSvg from '../images/background.svg'
+
+//to connect to store
+import { connect } from 'react-redux';
+import { fetchChildInfo } from '../../actions/childsAction.jsx'
 
 class ChildView extends Component {
+  componentWillMount() {
+    this.props.fetchChildInfo(this.props.match.params.childId);
+  }
   render() {
+    const id = this.props.match.params.childId;
     return (
-      <div>
-        <h1>Hello this is the child page</h1>
-      </div>
+      <div className="main-container">
+        <div className="background">
+          <div className="background-img">
+            <img src={backgroundSvg}/>
+            <div className="color-block"></div>
+          </div>
+        </div>
+            <h1>sidebar goes here</h1>
+            <Row className="col-md-9">   
+              <Col md="7">
+              <p> all the tasks of child list will go here</p>
+                <ChildTasks parentId={id}/>
+              </Col>
+              <Col md="5" className="last-col">
+                <p> all the rewards list will go here</p>
+              </Col>
+            </Row> 
+        </div>
     )
   }
 }
-export default ChildView;
+const mapStateToProps = state => (
+  {childInfo : state.child.childInfo})
+export default connect (mapStateToProps, {fetchChildInfo})(ChildView);
