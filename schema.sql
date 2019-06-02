@@ -25,6 +25,7 @@ CREATE TABLE `task` (
   `title` varchar(255),
   `value` int,
   `aproved` boolean,
+  `status` int,
   `parent_id` int,
   `child_id` int NULL
 );
