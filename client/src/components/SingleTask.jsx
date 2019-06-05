@@ -12,6 +12,7 @@ class SingleTask extends Component {
       title: '',
       value: this.props.post.value,
       id: this.props.post.id,
+      aproved: this.props.post.aproved,
       updateToggle: false
     }
     this.stateHandler = this.stateHandler.bind(this);
@@ -34,7 +35,9 @@ class SingleTask extends Component {
     e.preventDefault();
     const task = {
       title : this.state.title,
-      value : this.state.value, 
+      value : this.state.value,
+      aproved : this.state.aproved,
+      status : this.props.post.status, 
       id: this.state.id
     }
     // Call Action and past post through
@@ -49,7 +52,7 @@ class SingleTask extends Component {
   
   }
   render() {
-    const {id, title, value, aproved, parent_id} = this.props.post;
+    const {id, title, value, aproved,status, parent_id} = this.props.post;
 
     let updateFrom = (<CardBody>
         <form onSubmit={this.submitHandler} className='update-form'>
