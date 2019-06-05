@@ -77,8 +77,9 @@ exports.deleteTask = (req, res) => {
 
 // This will UPDATE task
 exports.updateTask = (req, res) => {
-	let updatedtask = Object.values(req.body);
-	db.query('UPDATE task SET title=?, value=?, aproved=?, status=? WHERE id=?',updatedtask, (err,result) => {
+	const {id, title, value, aproved,status, parent_id} = req.body;
+		
+	db.query(`UPDATE task SET title="${title}", value=${value}, aproved=${aproved}, status=${status}, parent_id=${parent_id} WHERE id=${id}`, (err,result) => {
 		if(err) {
 			res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
 		} else {

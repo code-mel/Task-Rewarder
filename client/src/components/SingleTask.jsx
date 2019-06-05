@@ -37,7 +37,8 @@ class SingleTask extends Component {
       title : this.state.title,
       value : this.state.value,
       aproved : this.state.aproved,
-      status : this.props.post.status, 
+      status : this.props.post.status,
+      parent_id : this.props.post.parent_id, 
       id: this.state.id
     }
     // Call Action and past post through
