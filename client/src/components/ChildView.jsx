@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Row, Col} from 'reactstrap'
 
 import  ChildTasks  from "./ChildViewComp/ChildTasks.jsx";
+import  ChildSidebar  from "./ChildViewComp/ChildSidebar.jsx";
 
 import backgroundSvg from '../images/background.svg'
 
@@ -23,7 +24,7 @@ class ChildView extends Component {
             <div className="color-block"></div>
           </div>
         </div>
-            <h1>sidebar goes here</h1>
+            <ChildSidebar childInfo={this.props.childInfo} history={this.props.history}/>
             <Row className="col-md-9">   
               <Col md="7">
               <p> all the tasks of child list will go here</p>
@@ -38,5 +39,7 @@ class ChildView extends Component {
   }
 }
 const mapStateToProps = state => (
-  {childInfo : state.child.childInfo})
+  {childInfo : state.child.childInfo,
+  history :state.child.history}
+  )
 export default connect (mapStateToProps, {fetchChildInfo})(ChildView);

@@ -5,7 +5,7 @@ export const fetchChildInfo = (childId) => dispatch => {
   //console.log('I am fetching',parentId)
     axios.get(`/child/${childId}/info`)
       .then(record => {
-        console.log(record)
+        //console.log(record)
         dispatch({
           type: FETCH_CHILD_INFO,
           payload: record.data[0] //SHOULD BE PASSING AN OBJECT
