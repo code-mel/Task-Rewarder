@@ -36,7 +36,10 @@ class ChildSingleTask extends Component {
         const {id, title, value, aproved, parent_id, child_id} = this.props.post;
         let currentStatus = 'avaliable';
         let button;
-        if(!this.state.status) { // when status is 0
+        if(typeof child_id === "number" && child_id !== this.props.childId) {
+            currentStatus = 'TASK TAKEN'
+            button ='' //keep clear
+        }else if(!this.state.status) { // when status is 0
             button = <Button onClick={this.statusUpdate}>Do</Button>
         }else if(this.state.status === 1) { // 1 means that "do" button was clicked
             currentStatus = 'In Progress'
