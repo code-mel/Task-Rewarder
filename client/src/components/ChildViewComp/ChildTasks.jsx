@@ -9,7 +9,7 @@ import ChildSingleTask from './ChildSingleTask.jsx'
 class ChildTasks extends Component {
   render() {
     const taskslist = this.props.tasks.map(task => (
-      <ChildSingleTask key={task.id} post={task} />
+      <ChildSingleTask key={task.id} post={task} childId={this.props.childId}/>
     ));
     return (
       <div className="taskList main-card">
@@ -19,6 +19,7 @@ class ChildTasks extends Component {
   }
 }
 const mapStateToProps = state => (
-  { tasks: state.child.tasks
+  { childId : state.child.childInfo.id,
+    tasks: state.child.tasks
   })
 export default connect (mapStateToProps)(ChildTasks);

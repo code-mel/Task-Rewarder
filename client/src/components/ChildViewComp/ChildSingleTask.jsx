@@ -17,7 +17,8 @@ class ChildSingleTask extends Component {
         let updatedTask = this.props.post;
         
         if(!this.state.status){
-            updatedTask.status = 1
+            updatedTask.status = 1;
+            updatedTask.child_id = this.props.childId;
             console.log(updatedTask)
             // Call Action and past post through
             this.props.updatePost(updatedTask);
