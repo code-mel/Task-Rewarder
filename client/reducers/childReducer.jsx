@@ -18,7 +18,7 @@ export default (state = initialState, action) => {
         return {
             ...state,
             tasks : action.payload,
-            history : action.payload.filter(task => task.aproved)
+            history : action.payload.filter(task => task.aproved && (state.childInfo.id === task.child_id))
         }
         default:
             return state;
