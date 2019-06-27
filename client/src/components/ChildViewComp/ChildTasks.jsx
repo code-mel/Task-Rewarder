@@ -2,15 +2,11 @@ import React, { Component } from 'react'
 
 //to connect to store
 import { connect } from 'react-redux';
-import { fetchChildTaks } from '../../../actions/childsAction.jsx'
+
 
 import ChildSingleTask from './ChildSingleTask.jsx'
 
 class ChildTasks extends Component {
-  componentWillMount() {
-    //console.log(this.props.parentId)
-    this.props.fetchChildTaks(this.props.parentId);
-  }
   render() {
     const taskslist = this.props.tasks.map(task => (
       <ChildSingleTask key={task.id} post={task} />
@@ -25,4 +21,4 @@ class ChildTasks extends Component {
 const mapStateToProps = state => (
   { tasks: state.child.tasks
   })
-export default connect (mapStateToProps, {fetchChildTaks})(ChildTasks);
+export default connect (mapStateToProps)(ChildTasks);

@@ -3,14 +3,16 @@ import { FETCH_CHILD_INFO, FETCH_CHILD_TASKS,FETCH_CHILD_TASKS_HISTORY } from '.
 const initialState = {
     tasks : [],
     history :[],
-    childInfo : {}
+    childInfo : {},
+    parentId : 0
 }
 export default (state = initialState, action) => {
     switch(action.type) {
         case FETCH_CHILD_INFO :
         return {
             ...state,
-            childInfo : action.payload
+            childInfo : action.payload,
+            parentId : action.payload.parent_id
         }
         case FETCH_CHILD_TASKS :
         return {

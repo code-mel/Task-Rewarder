@@ -10,7 +10,6 @@ class ChildSidebar extends Component {
         let {name, wallet} = this.props.childInfo;
         return (
             <Col md="3" className="side-nav">
-            {console.log('childSide Bar: ',this.props)}
                 <div className="profile-container">
                 <img src="https://via.placeholder.com/150" alt="Profile Pic"/>
                 <h3>{name}</h3>

@@ -9,10 +9,16 @@ import backgroundSvg from '../images/background.svg'
 //to connect to store
 import { connect } from 'react-redux';
 import { fetchChildInfo } from '../../actions/childsAction.jsx'
+import { fetchChildTaks } from '../../actions/childsAction.jsx'
 
 class ChildView extends Component {
   componentWillMount() {
     this.props.fetchChildInfo(this.props.match.params.childId);
+  }
+  componentWillUpdate(p,a) {
+    if(this.props.id === 0){
+      this.props.fetchChildTaks(p.id);
+    }
   }
   render() {
     const id = this.props.match.params.childId;
@@ -28,7 +34,7 @@ class ChildView extends Component {
             <Row className="col-md-9">   
               <Col md="7">
               <p> all the tasks of child list will go here</p>
-                <ChildTasks parentId={id}/>
+                <ChildTasks/>
               </Col>
               <Col md="5" className="last-col">
                 <p> all the rewards list will go here</p>
@@ -40,6 +46,7 @@ class ChildView extends Component {
 }
 const mapStateToProps = state => (
   {childInfo : state.child.childInfo,
+    id: state.child.parentId,
   history :state.child.history}
   )
-export default connect (mapStateToProps, {fetchChildInfo})(ChildView);
+export default connect (mapStateToProps, {fetchChildInfo,fetchChildTaks})(ChildView);
