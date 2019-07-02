@@ -18,6 +18,7 @@ export const fetchPost = (parentId) => dispatch => {
       let taskData = postData;
       taskData['id'] = Number(addedPost.data);
       taskData['child_id'] = undefined;
+      taskData['status'] = 0;
       dispatch({
         type: NEW_POST,
         payload: taskData

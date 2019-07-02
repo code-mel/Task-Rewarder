@@ -9,7 +9,7 @@ class SingleTask extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
+      title: this.props.post.title,
       value: this.props.post.value,
       id: this.props.post.id,
       aproved: this.props.post.aproved,
@@ -31,15 +31,15 @@ class SingleTask extends Component {
   deleteTask(id) {
     this.props.deletePost(id);
   }
-  submitHandler(e) {
+  submitHandler(e,status,approve) {
     e.preventDefault();
     const task = {
       title : this.state.title,
       value : this.state.value,
-      aproved : this.state.aproved,
-      status : this.props.post.status,
+      aproved : approve ? approve : this.state.aproved,
+      status : status ? status : this.props.post.status,
       parent_id : this.props.post.parent_id,
-      child_id : 'NULL', 
+      child_id : 'NULL',
       id: this.state.id
     }
     // Call Action and past post through
@@ -53,9 +53,7 @@ class SingleTask extends Component {
     })
   
   }
-  statusUpdate(id, stats) {
-    ///Status update function ....
-  }
+ 
   render() {
     const {id, title, value, aproved,status, parent_id} = this.props.post;
     let currentCard;
@@ -87,7 +85,7 @@ class SingleTask extends Component {
           <li><strong>{title}</strong></li>
           <li> Pts. {value}</li>
       </ul>
-      <Button onClick={()=> this.statusUpdate(id, 0)}>Disapprove</Button> <Button name="approveTask" onClick={()=> this.statusUpdate(id, 1)}>Approve</Button>
+      <Button onClick={(e)=> this.submitHandler(e ,1)}>Disapprove</Button> <Button name="approveTask" onClick={(e)=> this.submitHandler(e, null, 1)}>Approve</Button>
       </CardBody>);
     }else if(status === 2 && aproved){ // if status is 2 and 1 then card with just Delete button will show
       currentCard = (<CardBody>
