@@ -39,7 +39,7 @@ class SingleTask extends Component {
       aproved : approve ? approve : this.state.aproved,
       status : status ? status : this.props.post.status,
       parent_id : this.props.post.parent_id,
-      child_id : 'NULL',
+      child_id : this.props.post.child_id,
       id: this.state.id
     }
     // Call Action and past post through
@@ -55,7 +55,7 @@ class SingleTask extends Component {
   }
  
   render() {
-    const {id, title, value, aproved,status, parent_id} = this.props.post;
+    const {id, title, value, aproved,status, parent_id, child_id} = this.props.post;
     let currentCard;
 
     let updateFrom = (<CardBody>
