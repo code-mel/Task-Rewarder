@@ -35,6 +35,8 @@ app.put('/task/:id', controllers.updateTask);
 // Addes in a child 
 app.post('/child', controllers.addChild);
 
+app.put('/child/:childId/wallet', controllers.updateWallet)
+
 // Gets children basedon passed parent id 
 app.get('/parentinfo/:parentId/children', controllers.getParentChildren);
 

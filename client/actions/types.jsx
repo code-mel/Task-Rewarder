@@ -13,3 +13,4 @@ export const FETCH_KIDS = 'FETCH_KIDS';
 // This are types related to Childs View
 export const FETCH_CHILD_INFO = 'FETCH_CHILD_INFO';
 export const FETCH_CHILD_TASKS = 'FETCH_CHILD_TASKS';
+export const UPDATE_WALLET = 'UPDATE_WALLET';

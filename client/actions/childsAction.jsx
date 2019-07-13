@@ -1,4 +1,4 @@
-import { FETCH_CHILD_INFO, FETCH_CHILD_TASKS } from './types.jsx';
+import { FETCH_CHILD_INFO, FETCH_CHILD_TASKS, UPDATE_WALLET } from './types.jsx';
 import axios from 'axios';
 
 export const fetchChildInfo = (childId) => dispatch => {
@@ -27,3 +27,17 @@ export const fetchChildTaks = (parentId) => dispatch => {
       )
       
   };
+  export const updateChildWallet = (childId, taskValue) => dispatch => {
+    const childWallet = {'id' : childId,'value': taskValue}
+    axios.put(`/child/${childId}/wallet`, childWallet)
+    .then( () => { 
+      console.log('Wallet updated :',childWallet);
+      dispatch({
+        type: UPDATE_WALLET,
+        payload: childWallet
+      })
+    })
+    .catch( (error) => { // this will throw an errors for any caught erros 
+      console.log(error);
+    });
+  }

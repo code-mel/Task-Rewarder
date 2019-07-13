@@ -120,3 +120,16 @@ exports.getChildrenTasks = (req, res) => {
 })
 };
 
+// update child wallet value
+exports.updateWallet = (req, res) => {
+	console.log(req.body);	
+	const {id, value} = req.body;	
+	console.log(req.body, id, value);	
+	db.query(`UPDATE child SET wallet= wallet + ${value} WHERE id=${id}`, (err,result) => {
+		if(err) {
+			res.status(505).send(err); // .send is important because it stops the connection and inform the client what is happening
+		} else {
+			res.status(200).send(result);
+		}
+	})
+};
