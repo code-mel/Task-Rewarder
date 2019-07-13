@@ -4,6 +4,7 @@ import {Button, CardBody, Card,Label,Input} from 'reactstrap'
 //to connect to store
 import { connect } from 'react-redux';
 import {deletePost,updatePost} from '../../actions/postAction.jsx'
+import {updateChildWallet}from '../../actions/childsAction.jsx'
 
 class SingleTask extends Component {
   constructor(props) {
@@ -39,11 +40,16 @@ class SingleTask extends Component {
       aproved : approve ? approve : this.state.aproved,
       status : status ? status : this.props.post.status,
       parent_id : this.props.post.parent_id,
-      child_id : this.props.post.child_id,
+      child_id : this.props.post.child_id || 'NULL',
       id: this.state.id
     }
     // Call Action and past post through
     this.props.updatePost(task);
+
+    //This is when the approved button is clicked on, only then will we update the child wallet value
+    if(status === null && approve === 1) {
+      this.props.updateChildWallet(task.child_id, task.value);
+    }
 
     // Reset state
     this.setState({
@@ -107,4 +113,4 @@ class SingleTask extends Component {
   }
 }
 
-export default connect (null, {deletePost,updatePost})(SingleTask);
+export default connect (null, {deletePost,updatePost,updateChildWallet})(SingleTask);

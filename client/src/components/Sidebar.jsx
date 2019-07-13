@@ -35,7 +35,7 @@ class Sidebar extends Component {
   render() {
       const {id, name, userName} = this.props.parentInfo;
       const children = this.props.children.map(child => (
-        <DropdownItem key={child.id}>{child.name}</DropdownItem>
+        <DropdownItem key={child.id} href={'/child/' + child.id} target="_blank">{child.name}</DropdownItem>
       ));
     return (
     <Col md="3" className="side-nav">
