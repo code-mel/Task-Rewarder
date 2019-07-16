@@ -40,8 +40,8 @@ class Sidebar extends Component {
     return (
     <Col md="3" className="side-nav">
         <div className="profile-container">
-          <img src="https://via.placeholder.com/150" alt="Profile Pic"/>
-          <h3>{name}</h3>
+          
+          <h3>Parent <br/>{name}</h3>
         </div>
 
         <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
